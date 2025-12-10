@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Iqraaaa!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --bg-color: #0a0f1d;
+            --text-color: #ffffff;
+            --accent-pink: #ff5e6c;
+            --secondary-text: #b0b0b0;
+            --card-bg: #1a1f2e;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        
+        .hidden { display: none !important; opacity: 0; }
+        .fade-in { animation: fadeInAnimation 2s ease forwards; }
+
+        @keyframes fadeInAnimation {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* SCREEN 1: LANDING */
+        #screen1 {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px;
+            background: radial-gradient(circle at top right, #1e2538 0%, var(--bg-color) 70%);
+        }
+
+        .pill-chip {
+            background-color: #eeeae4;
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            display: inline-flex;
+            align-items: center;
+        }
+        .pill-chip::before { content: '•'; color: var(--accent-pink); font-size: 1.5rem; margin-right: 8px; line-height: 0; }
+        .stars { color: #e5c07b; font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 5px; }
+        
+        h1.main-title { font-size: 3.5rem; line-height: 1.2; margin: 0 0 20px 0; font-weight: 400; }
+        p.subtitle { font-size: 1.1rem; color: var(--secondary-text); margin-bottom: 40px; }
+
+        .unlock-btn {
+            background: linear-gradient(to right, var(--accent-pink), #ff8a97);
+            color: white;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        .unlock-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px -10px rgba(255, 94, 108, 0.5); }
+        .unlock-btn span { margin-left: 10px; }
+
+        .footer-note { position: absolute; bottom: 40px; left: 40px; font-size: 0.9rem; color: var(--secondary-text); }
+
+        /* SCREEN 2: MAIN */
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; text-align: center; }
+        .birthday-heading { font-size: 3rem; color: var(--accent-pink); margin-bottom: 10px; }
+        
+        .main-photo-frame {
+            width: 280px;
+            height: 280px;
+            margin: 30px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid var(--accent-pink);
+            box-shadow: 0 0 30px rgba(255, 94, 108, 0.4);
+        }
+        .main-photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Cake */
+        .cake-section { position: relative; margin: 50px auto; width: 300px; cursor: pointer; }
+        #cakeImg { width: 100%; display: block; }
+        .flame {
+            position: absolute; top: -35px; left: 50%; width: 20px; height: 35px;
+            background: radial-gradient(ellipse at bottom, #ffd700, #ff4500);
+            border-radius: 50% 50% 20% 20%;
+            transform: translateX(-50%);
+            animation: flicker 0.1s infinite alternate;
+            z-index: 10;
+        }
+        @keyframes flicker { from {transform: translateX(-50%) scale(1);} to {transform: translateX(-50%) scale(1.1); opacity: 0.8;} }
+
+        /* Wish Box */
+        .wish-container { background: var(--card-bg); padding: 30px; border-radius: 20px; margin-top: 50px; }
+        .wish-input {
+            width: 80%; padding: 15px; border-radius: 10px; border: 1px solid var(--accent-pink);
+            background: #0a0f1d; color: white; margin-bottom: 20px; font-family: 'Poppins', sans-serif;
+        }
+
+        /* SCREEN 3: GALLERY */
+        .gallery-section { padding: 60px 20px; background: #111625; }
+        .polaroid-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; max-width: 1000px; margin: 0 auto; }
+        
+        .polaroid {
+            background: white; padding: 15px 15px 40px 15px;
+            box-shadow: 5px 10px 20px rgba(0,0,0,0.5);
+            transform: rotate(-2deg); transition: transform 0.3s;
+            width: 260px; color: #333; text-align: center;
+        }
+        .polaroid:hover { transform: rotate(0deg) scale(1.05); z-index: 10; }
+        .polaroid:nth-child(even) { transform: rotate(2deg); }
+        
+        .polaroid img { width: 100%; object-fit: cover; filter: sepia(10%); border: 1px solid #eee; }
+        .polaroid.landscape img { aspect-ratio: 4/3; }
+        .polaroid.portrait img { aspect-ratio: 3/4; }
+        
+        .caption-text {
+            font-family: 'Dancing Script', cursive;
+            margin-top: 15px; font-size: 1.3rem; line-height: 1.4; color: #444;
+        }
+
+        /* SCREEN 4: MESSAGE */
+        .final-section { padding: 80px 20px; text-align: center; max-width: 800px; margin: 0 auto; }
+        .video-container {
+            width: 100%; max-width: 600px; margin: 0 auto 50px; border-radius: 20px;
+            overflow: hidden; box-shadow: 0 10px 30px -10px var(--accent-pink);
+        }
+        video { width: 100%; display: block; }
+
+        .final-message-box {
+            background: var(--card-bg); padding: 40px; border-radius: 20px;
+            border: 1px solid rgba(255, 94, 108, 0.2); text-align: left;
+        }
+        .final-message-box h2 { color: var(--accent-pink); margin-bottom: 20px; text-align: center; }
+        .message-content {
+            font-size: 1.1rem; line-height: 1.8; white-space: pre-line; /* Keeps your paragraphs */
+            color: #e0e0e0;
+        }
+
+        .footer-end { margin-top: 60px; font-family: 'Dancing Script', cursive; font-size: 2rem; color: var(--accent-pink); }
+
+        /* Mobile Fixes */
+        @media (max-width: 768px) {
+            h1.main-title { font-size: 2.5rem; }
+            .polaroid { width: 100%; max-width: 300px; }
+            #screen1 { align-items: center; text-align: center; }
+            .footer-note { position: relative; bottom: auto; left: auto; margin-top: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="screen1">
+        <div class="pill-chip">FOR SOMEONE STUPIDLY IMPORTANT</div>
+        <div class="stars">★ ★ ★</div>
+        <h1 class="main-title">there’s a small birthday surprise hidden on this page.</h1>
+        <p class="subtitle">tap the button below to unlock it. (headphones recommended.)</p>
+        <button class="unlock-btn" onclick="startCelebration()">
+            tap to unlock <span>→</span>
+        </button>
+        <p class="footer-note">once you’re in, there’s no going back. (which is kind of how you are in my life too.)</p>
+    </div>
+
+    <div id="screen2" class="hidden container">
+        <h1 class="birthday-heading">Happy Birthday iqraaaa....</h1>
+        
+        <div class="main-photo-frame">
+            <img src="collage.jpg" alt="Iqra">
+        </div>
+
+        <div class="cake-section" onclick="interactCake()">
+            <div class="flame" id="candleFlame"></div>
+            <img id="cakeImg" src="cake_full.png" alt="Birthday Cake">
+            <p style="color: var(--secondary-text); margin-top: 15px; font-size: 0.9rem;">(Tap the cake to make a wish!)</p>
+        </div>
+
+        <div class="wish-container">
+            <h3 style="color: var(--accent-pink)">Make a Wish Here ✨</h3>
+            <textarea id="wishText" class="wish-input" rows="3" placeholder="Type your wish..."></textarea>
+            <br>
+            <button class="unlock-btn" style="padding: 10px 30px; margin: 0 auto;" onclick="sendWish()">Submit Wish</button>
+        </div>
+    </div>
+
+    <div id="screen3" class="hidden gallery-section">
+        <h2 style="text-align: center; margin-bottom: 50px; font-size: 2.5rem;">Us... ❤️</h2>
+        <div class="polaroid-grid">
+            
+            <div class="polaroid landscape">
+                <img src="pol1.jpg" alt="Memory">
+                <div class="caption-text">Teri nazron ne dil pe kiya hai asar… 🥹❤️</div>
+            </div>
+
+            <div class="polaroid landscape">
+                <img src="pol2.jpg" alt="Memory">
+                <div class="caption-text">I’ll always fall in love with that bholi si shakal — over and over again.</div>
+            </div>
+
+            <div class="polaroid portrait">
+                <img src="pol3.jpg" alt="Memory">
+                <div class="caption-text">Whenever I look into your eyes, everything else just disappears.</div>
+            </div>
+
+            <div class="polaroid portrait">
+                <img src="pol4.jpg" alt="Memory">
+                <div class="caption-text">Even in a crowd, my eyes only search for you.</div>
+            </div>
+
+            <div class="polaroid portrait">
+                <img src="pol5.jpg" alt="Memory">
+                <div class="caption-text">Fighting with you is my favourite bad habit — and I’m never stopping.</div>
+            </div>
+
+            <div class="polaroid portrait">
+                <img src="pol6.jpg" alt="Memory">
+                <div class="caption-text">Thank you for trusting me with your heart — it means more than you know.</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="screen4" class="hidden final-section">
+        <div class="video-container">
+            <video controls>
+                <source src="birthday_video.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="final-message-box">
+            <h2>happy birthday, iqraaa…</h2>
+            <div class="message-content">
+I don’t say it often, but you’re the most precious part of my life — the one person I’m genuinely scared to lose.
+
+Thank you for standing with me in my lowest moments, for trying to understand me even when it wasn’t easy, and for choosing me through fights, ego, and chaos.
+
+Hum kabhi perfect nahi rahe, hum hamesha ladte rahenge — but despite everything, I’ve never stopped choosing you. Not even for a second.
+            </div>
+        </div>
+
+        <div class="footer-end">
+            Happy Birthday once again , budhuuu.
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        function startCelebration() {
+            document.getElementById('screen1').style.display = 'none';
+            
+            ['screen2', 'screen3', 'screen4'].forEach(id => {
+                const el = document.getElementById(id);
+                el.classList.remove('hidden');
+                el.classList.add('fade-in');
+            });
+
+            // Play Song
+            var audio = document.getElementById('bgMusic');
+            audio.volume = 0.5;
+            audio.play().catch(error => console.log("Audio play failed: ", error));
+
+            // Confetti Blast
+            var duration = 6 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+                if (timeLeft <= 0) return clearInterval(interval);
+                var particleCount = 50 * (timeLeft / duration);
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: Math.random(), y: Math.random() - 0.2 } }));
+            }, 250);
+
+            window.scrollTo(0,0);
+        }
+
+        // Cake Cutting Logic
+        let cakeState = 0;
+        function interactCake() {
+            const flame = document.getElementById('candleFlame');
+            const cakeImg = document.getElementById('cakeImg');
+
+            if(cakeState === 0) {
+                // Blow candle
+                flame.style.opacity = '0'; 
+                cakeState = 1;
+            } else if (cakeState === 1) {
+                // Cut cake
+                cakeImg.src = "cake_cut.png"; 
+                confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+                cakeState = 2;
+            }
+        }
+
+        // Wish Email Logic
+        function sendWish() {
+            const wish = document.getElementById('wishText').value;
+            if(!wish) { alert("Please write a wish first!"); return; }
+
+            // YAHAN APNA EMAIL ID LIKHNA MAT BHOOLNA
+            const myEmail = "YOUR_EMAIL@gmail.com"; 
+            
+            const subject = "New Birthday Wish from Iqra!";
+            window.location.href = `mailto:${myEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(wish)}`;
+        }
+    </script>
+</body>
+</html>
