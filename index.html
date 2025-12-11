@@ -197,6 +197,8 @@
                 Thank you for standing with me in my lowest moments, for trying to understand me even when it wasn’t easy, and for choosing me through fights, ego, and chaos.
                 <br><br>
                 Hum kabhi perfect nahi rahe, hum hamesha ladte rahenge — but despite everything, I’ve never stopped choosing you. Not even for a second.
+                <br><br>
+                Love you babuuu......
             </p>
         </div>
 
@@ -250,12 +252,21 @@
             }
         }
 
-        // Email Wish
-        function submitWish() {
-            const wish = document.getElementById('userWish').value;
-            const myEmail = "YOUR_EMAIL@gmail.com"; // CHANGE THIS
-            window.location.href = `mailto:${myEmail}?subject=Bday Wish from Iqra&body=${wish}`;
-        }
-    </script>
-</body>
-</html>
+
+// Wish SMS Logic
+function sendWish() {
+    const wish = document.getElementById('userWish').value;
+    if(!wish) { alert("Please write a wish first!"); return; }
+
+    /*
+    const phoneNumber = "+917644050291"; // <-- YAHAN APNA NUMBER DAAALNA
+
+    // Message jo tumhe aayega
+    const messageBody = "Hi! Iqra made a wish on the birthday website:\n\n" + wish;
+
+    // Phone ka message app open karna
+    // encodeURIComponent zaroori hai taaki message sahi se pahuche
+    window.location.href = `sms:${phoneNumber}?body=${encodeURIComponent(messageBody)}`;
+}
+        
+
