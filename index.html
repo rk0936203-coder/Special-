@@ -258,15 +258,18 @@ function sendWish() {
     const wish = document.getElementById('userWish').value;
     if(!wish) { alert("Please write a wish first!"); return; }
 
-    /*
-    const phoneNumber = "+917644050291"; // <-- YAHAN APNA NUMBER DAAALNA
+    /* Yahan apna number daalna (Quotes ke andar).
+       Example: "+919876543210"
+    */
+    const phoneNumber = "+91xxxxxxxxxx"; 
 
-    // Message jo tumhe aayega
-    const messageBody = "Hi! Iqra made a wish on the birthday website:\n\n" + wish;
+    // Message Body
+    // Note: Yahan <br> nahi, \n use hota hai nayi line ke liye
+    const messageBody = "Hi! Iqra made a wish on the birthday website:\n\n" + wish + "\n\nLove u Babu... ❤️";
 
     // Phone ka message app open karna
-    // encodeURIComponent zaroori hai taaki message sahi se pahuche
     window.location.href = `sms:${phoneNumber}?body=${encodeURIComponent(messageBody)}`;
 }
-        
+
+
 
