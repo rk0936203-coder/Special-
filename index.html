@@ -18,10 +18,9 @@
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            overflow: hidden; /* Scroll band kar diya taaki flow control rahe */
+            overflow: hidden; 
         }
 
-        /* Centering Wrapper for all screens */
         .screen {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -34,19 +33,17 @@
         .fade-out { opacity: 0; transform: scale(0.95); pointer-events: none; }
         .fade-in { opacity: 1; transform: scale(1); }
 
-        /* TYPOGRAPHY */
         h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--accent-pink); margin-bottom: 10px; }
         p { font-size: 1.1rem; color: #b0b0b0; line-height: 1.6; }
         .cute-text { font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: #ffd1dc; margin: 20px 0; }
 
-        /* IMAGES & FRAMES */
+        /* FRAMES */
         .photo-frame {
             width: 280px; height: 280px; border-radius: 50%; overflow: hidden;
             border: 5px solid var(--accent-pink); box-shadow: 0 0 30px rgba(255, 94, 108, 0.4);
             margin: 20px auto; animation: float 3s ease-in-out infinite;
         }
         .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
-
         @keyframes float { 0%, 100% {transform: translateY(0);} 50% {transform: translateY(-10px);} }
 
         /* BUTTONS */
@@ -57,19 +54,19 @@
             box-shadow: 0 5px 15px rgba(255, 94, 108, 0.4);
             transition: transform 0.2s; font-family: 'Poppins', sans-serif;
         }
-        .btn:hover { transform: scale(1.05); background: linear-gradient(45deg, #ff4757, #ff6b81); }
+        .btn:hover { transform: scale(1.05); }
         
         /* CAKE */
         .cake-container { position: relative; width: 250px; margin: 20px auto; cursor: pointer; }
         .cake-container img { width: 100%; }
         .flame {
-            position: absolute; top: -30px; left: 50%; transform: translateX(-50%);
-            width: 15px; height: 30px; background: orange; border-radius: 50%;
-            animation: flicker 0.2s infinite;
+            position: absolute; top: -35px; left: 50%; transform: translateX(-50%);
+            width: 15px; height: 35px; background: orange; border-radius: 50%;
+            animation: flicker 0.2s infinite; z-index: 10;
         }
         @keyframes flicker { 0% {opacity: 1;} 100% {opacity: 0.8; transform: translateX(-50%) scale(1.1);} }
 
-        /* POLAROIDS (Scrollable within section) */
+        /* POLAROIDS */
         .gallery-scroll {
             width: 100%; height: 60vh; overflow-y: auto; overflow-x: hidden;
             padding: 10px; margin-bottom: 20px;
@@ -80,18 +77,14 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
         .polaroid img { width: 100%; filter: sepia(10%); }
-        .polaroid:nth-child(even) { transform: rotate(2deg); }
         .caption { font-family: 'Dancing Script', cursive; margin-top: 10px; font-size: 1.2rem; color: #444; }
 
-        /* VIDEO */
+        /* VIDEO & INPUT */
         video { width: 90%; max-width: 500px; border-radius: 15px; box-shadow: 0 0 20px var(--accent-pink); }
-        
-        /* WISH INPUT */
         input, textarea {
             width: 80%; padding: 12px; border-radius: 8px; border: 1px solid var(--accent-pink);
             background: #111; color: white; margin-top: 10px; font-family: inherit;
         }
-
     </style>
 </head>
 <body>
@@ -129,7 +122,7 @@
         <div id="wishSection" style="display:none; opacity: 0; transition: opacity 1s;">
             <textarea id="userWish" rows="2" placeholder="Apni wish yahan likho..."></textarea>
             <br>
-            <button class="btn" style="background: #444;" onclick="submitWish()">Done ✅</button>
+            <button class="btn" style="background: #444;" onclick="sendWish()">Done ✅</button>
         </div>
 
         <button id="btnAfterCake" class="btn hidden" onclick="nextScreen('s3', 'filler1')">Next Surprise ➡️</button>
@@ -144,42 +137,20 @@
 
     <div id="s4" class="screen hidden">
         <h2 style="font-size: 1.8rem; margin-bottom: 10px;">Us... ❤️</h2>
-        <p style="font-size: 0.9rem; margin-bottom: 20px;">(Scroll down to see magic)</p>
-        
         <div class="gallery-scroll">
-            <div class="polaroid">
-                <img src="pol1.jpg">
-                <div class="caption">Teri nazron ne dil pe kiya hai asar… 🥹❤️</div>
-            </div>
-            <div class="polaroid">
-                <img src="pol2.jpg">
-                <div class="caption">I’ll always fall in love with that bholi si shakal.</div>
-            </div>
-            <div class="polaroid">
-                <img src="pol3.jpg">
-                <div class="caption">Whenever I look into your eyes, everything else disappears.</div>
-            </div>
-            <div class="polaroid">
-                <img src="pol4.jpg">
-                <div class="caption">Even in a crowd, my eyes only search for you.</div>
-            </div>
-            <div class="polaroid">
-                <img src="pol5.jpg">
-                <div class="caption">Fighting with you is my favourite bad habit.</div>
-            </div>
-            <div class="polaroid">
-                <img src="pol6.jpg">
-                <div class="caption">Thank you for trusting me with your heart.</div>
-            </div>
+            <div class="polaroid"><img src="pol1.jpg"><div class="caption">Teri nazron ne dil pe kiya hai asar… 🥹❤️</div></div>
+            <div class="polaroid"><img src="pol2.jpg"><div class="caption">I’ll always fall in love with that bholi si shakal.</div></div>
+            <div class="polaroid"><img src="pol3.jpg"><div class="caption">Whenever I look into your eyes, everything else disappears.</div></div>
+            <div class="polaroid"><img src="pol4.jpg"><div class="caption">Even in a crowd, my eyes only search for you.</div></div>
+            <div class="polaroid"><img src="pol5.jpg"><div class="caption">Fighting with you is my favourite bad habit.</div></div>
+            <div class="polaroid"><img src="pol6.jpg"><div class="caption">Thank you for trusting me with your heart.</div></div>
         </div>
-
         <button class="btn" onclick="nextScreen('s4', 'filler2')">Ek last cheez... 💌</button>
     </div>
 
     <div id="filler2" class="screen hidden">
         <h2 style="font-size: 1.5rem;">Mazak apni jagah...</h2>
         <p>Par kuch baatein serious hain jo main hamesha bol nahi paata.</p>
-        <br>
         <button class="btn" onclick="nextScreen('filler2', 's5')">Listen to me ❤️</button>
     </div>
 
@@ -198,11 +169,11 @@
                 <br><br>
                 Hum kabhi perfect nahi rahe, hum hamesha ladte rahenge — but despite everything, I’ve never stopped choosing you. Not even for a second.
                 <br><br>
-                Love you babuuu......
+                <strong>Love you babuuu.... ❤️🥺</strong>
             </p>
         </div>
 
-        <p class="cute-text" style="font-size: 1.5rem;">Happy Birthday once again, Budhuuu! 🎈</p>
+        <p class="cute-text" style="font-size: 1.5rem;">Happy Birthday once again! 🎈</p>
         <br><br>
     </div>
 
@@ -212,10 +183,10 @@
         function nextScreen(currentId, nextId, playMusic = false) {
             if(playMusic) {
                 var audio = document.getElementById('bgMusic');
-                audio.volume = 0.5;
-                audio.play().catch(e => console.log("Audio waiting for interaction"));
-                
-                // First confetti blast
+                if(audio) {
+                    audio.volume = 0.5;
+                    audio.play().catch(e => console.log("Audio waiting for interaction"));
+                }
                 confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
             }
 
@@ -243,7 +214,6 @@
                 confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
                 cakeState = 2;
                 
-                // Show Wish Section & Next Button
                 setTimeout(() => {
                     wishSec.style.display = 'block';
                     wishSec.style.opacity = '1';
@@ -252,24 +222,17 @@
             }
         }
 
+        // --- SMS LOGIC (Yahan apna Number Daalna) ---
+        function sendWish() {
+            const wish = document.getElementById('userWish').value;
+            if(!wish) { alert("Please write a wish first!"); return; }
 
-// Wish SMS Logic
-function sendWish() {
-    const wish = document.getElementById('userWish').value;
-    if(!wish) { alert("Please write a wish first!"); return; }
+            // ⚠️ YAHAN APNA NUMBER LIKHEIN (+91 ke saath)
+            const phoneNumber = "+917644050291"; 
 
-    /* Yahan apna number daalna (Quotes ke andar).
-       Example: "+919876543210"
-    */
-    const phoneNumber = "+91xxxxxxxxxx"; 
-
-    // Message Body
-    // Note: Yahan <br> nahi, \n use hota hai nayi line ke liye
-    const messageBody = "Hi! Iqra made a wish on the birthday website:\n\n" + wish + "\n\nLove u Babu... ❤️";
-
-    // Phone ka message app open karna
-    window.location.href = `sms:${phoneNumber}?body=${encodeURIComponent(messageBody)}`;
-}
-
-
-
+            const messageBody = "Hi! Iqra made a wish on the birthday website:\n\n" + wish;
+            window.location.href = `sms:${phoneNumber}?body=${encodeURIComponent(messageBody)}`;
+        }
+    </script>
+</body>
+</html>
